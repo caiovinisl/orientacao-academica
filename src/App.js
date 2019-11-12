@@ -1,27 +1,88 @@
 import React from 'react';
-import Header from './components/Header';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { 
+  Button, 
+  Form, 
+  FormGroup, 
+  Label, 
+  Input,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  FormText,
+  Table
+} from 'reactstrap';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
+    <Router>
+    <div>
+      <Navbar color="dark" light expand="md">
+        <NavbarBrand href="/">Orientação Acadêmica</NavbarBrand>
+         <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink href="/">
+                <Link to="/">Home</Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/professores">
+                <Link to="/professores">Painel de professores</Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/creditos">
+                <Link to="/creditos">Créditos</Link>
+              </NavLink>
+            </NavItem>
+         </Nav>   
+      </Navbar>
+
+      {/* A <Switch> looks through its children <Route>s and
+          renders the first one that matches the current URL. */}
+      <Switch>
+        <Route path="/creditos">
+          <Creditos />
+        </Route>
+        <Route path="/professores">
+          <Professor />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </div>
+  </Router>
+  );
+}
+
+function Home() {
+  return (
     <div className="App">
-      <Header/>
-      <div className="Content">
-        <Form>
+      <Form>
           <FormGroup>
             <Label for="nome">Nome</Label>
-            <Input type="text" name="nome" id="nome" placeholder="Coloque aqui seu Nome" />
+            <Input type="text" name="nome" id="nome" placeholder="Coloque aqui seu nome" />
           </FormGroup>
           <FormGroup>
-            <Label for="email">Email</Label>
-            <Input type="email" name="email" id="email" placeholder="Coloque aqui seu Email" />
+            <Label for="matrícula">Matrícula</Label>
+            <Input type="matrícula" name="matrícula" id="matrícula" placeholder="Coloque aqui sua matrícula" />
           </FormGroup>
           <FormGroup>
             <Label for="semestre">Semestre</Label>
             <Input type="semestre" name="semestre" id="semestre" placeholder="Coloque aqui seu semestre" />
           </FormGroup>
           <FormGroup>
-            <Label for="materias">Selecione suas matérias</Label>
+            <Label for="materias">Matérias</Label>
             <Input type="select" name="materias" id="materias" multiple>
               <option>1</option>
               <option>2</option>
@@ -36,9 +97,64 @@ function App() {
           </FormGroup>
           <Button>Submit</Button>
         </Form>
-      </div>
     </div>
   );
+}
+
+function Professor() {
+  return (
+    <div className="App">
+      <div className="Content">
+        <Table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Curso</th>
+            <th>Comentário</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Exemplo</td>
+            <td>Ciência da Computação</td>
+            <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
+            <td><a>Vizualizar</a></td>
+          </tr>
+        </tbody>
+        </Table>
+        <Form>
+          <FormGroup>
+            <Label for="materias">Editar a grade do aluno</Label>
+            <Input type="select" name="materias" id="materias" multiple>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </Input>
+            <FormText color="muted">
+              Avalie a grade montada pelo aluno.
+            </FormText>
+          </FormGroup>
+          <FormGroup>
+            <Label for="comentario">Comentário</Label>
+            <Input type="textarea" name="comentario" id="comentario" />
+          </FormGroup>
+          <Button>Submit</Button>
+        </Form>
+      </div>
+    </div>
+  );  
+}
+
+function Creditos() {
+  return (
+    <div className="App">
+    </div>
+  );  
 }
 
 export default App;
