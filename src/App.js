@@ -35,8 +35,8 @@ function App() {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/professores">
-                <Link to="/professores">Painel de professores</Link>
+              <NavLink href="/login">
+                <Link to="/login">Login</Link>
               </NavLink>
             </NavItem>
             <NavItem>
@@ -49,23 +49,33 @@ function App() {
 
       {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
-      <Switch>
-        <Route path="/creditos">
-          <Creditos />
-        </Route>
-        <Route path="/professores">
-          <Professor />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
+        <div id="content">
+          <Switch>
+            <Route path="/creditos">
+              <Creditos />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
     </div>
   </Router>
   );
 }
 
 function Home() {
+  return (
+    <div className="App">
+      <h4>Bem-vindo ao sistema de Orientação Acadêmica.</h4>
+    </div>
+  );
+}
+
+function Aluno() {
   return (
     <div className="App">
       <Form>
@@ -101,10 +111,36 @@ function Home() {
   );
 }
 
+function Login() {
+  return (
+    <div className="Login">
+      <Router>
+        <div>
+          <Link to="/aluno">Aluno</Link>
+          <Link to="/professor">Professor</Link>
+
+          {/* A <Switch> looks through its children <Route>s and
+              renders the first one that matches the current URL. */}
+            <div id="content">
+              <Switch>
+                <Route path="/professor">
+                  <Professor />
+                </Route>
+                <Route path="/aluno">
+                  <Aluno />
+                </Route>
+              </Switch>
+            </div>
+        </div>
+      </Router>
+    </div>
+  );  
+}
+
 function Professor() {
   return (
-    <div className="App">
-      <div className="Content">
+    <div className="Professor">
+        <h4>Solicitações</h4>
         <Table>
         <thead>
           <tr>
@@ -146,13 +182,12 @@ function Professor() {
           <Button>Submit</Button>
         </Form>
       </div>
-    </div>
   );  
 }
 
 function Creditos() {
   return (
-    <div className="App">
+    <div className="Creditos">
     </div>
   );  
 }

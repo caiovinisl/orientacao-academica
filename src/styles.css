@@ -6,8 +6,12 @@
 }
 
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
     background: #fafafa;
     color: #333;
     text-align: justify;
+}
+
+#content {
+    margin: 5%;
 }
