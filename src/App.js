@@ -5,15 +5,17 @@ import {
   FormGroup, 
   Label, 
   Input,
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink,
   FormText,
-  Table
+  Table,
+  Badge,
+  Jumbotron,
+  Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle
 } from 'reactstrap';
 import {
   BrowserRouter as Router,
@@ -21,6 +23,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { IoMdEye } from "react-icons/io";
 
 function App() {
   return (
@@ -30,19 +33,10 @@ function App() {
         <NavbarBrand href="/">Orientação Acadêmica</NavbarBrand>
          <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/">
                 <Link to="/">Home</Link>
-              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/login">
                 <Link to="/login">Login</Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/creditos">
-                <Link to="/creditos">Créditos</Link>
-              </NavLink>
             </NavItem>
          </Nav>   
       </Navbar>
@@ -51,13 +45,22 @@ function App() {
           renders the first one that matches the current URL. */}
         <div id="content">
           <Switch>
-            <Route path="/creditos">
-              <Creditos />
+            <Route exact path="/professor">
+              <Professor />
             </Route>
-            <Route path="/login">
+            <Route exact path="/aluno">
+              <Aluno />
+            </Route>
+            <Route exact path="/cadastro">
+              <Cadastro />
+            </Route>
+            <Route exact path="/resetPassword">
+              <ResetPassword />
+            </Route>
+            <Route exact path="/login">
               <Login />
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <Home />
             </Route>
           </Switch>
@@ -70,7 +73,15 @@ function App() {
 function Home() {
   return (
     <div className="App">
-      <h4>Bem-vindo ao sistema de Orientação Acadêmica.</h4>
+      <Jumbotron>
+        <h1 className="display-3">Orientação Acadêmica</h1>
+        <p className="lead">Sistema criado para a matéria MATC84 para facilitar o processo de Orientação Acadêmica.</p>
+        <hr className="my-2" />
+        <p>Efetue o login para acessar o sistema.</p>
+        <p className="lead">
+          <Button color="primary"><Link to="/login">Login</Link></Button>
+        </p>
+      </Jumbotron>
     </div>
   );
 }
@@ -114,53 +125,98 @@ function Aluno() {
 function Login() {
   return (
     <div className="Login">
-      <Router>
-        <div>
-          <Link to="/aluno">Aluno</Link>
-          <Link to="/professor">Professor</Link>
-
-          {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
-            <div id="content">
-              <Switch>
-                <Route path="/professor">
-                  <Professor />
-                </Route>
-                <Route path="/aluno">
-                  <Aluno />
-                </Route>
-              </Switch>
+      <div className="authenticationForm">
+        <h4>Log in</h4>
+        <Form>
+          <div className="formItems">
+            <FormGroup>
+              <Input type="text" name="user" id="user" placeholder="Usuário" />
+            </FormGroup>
+            <FormGroup>
+              <Input type="password" name="password" id="password" placeholder="Senha" />
+            </FormGroup>
+            <Button>Log in</Button>
+            <div className="formLinks">
+                <FormText>
+                  <Link to="/cadastro">Cadastrar-se</Link>
+                </FormText>
+                <FormText>
+                  <Link to="/resetPassword">Esqueceu sua senha?</Link>
+                </FormText>
             </div>
-        </div>
-      </Router>
+          </div>
+        </Form>
+      </div>
+      
     </div>
   );  
+}
+
+function Cadastro() {
+  return (
+    <div className="Cadastro">
+      <div className="authenticationForm">
+        <h4>Cadastro</h4>
+        <Form>
+          <div className="formItems">
+            <FormGroup>
+              <Input type="text" name="user" id="user" placeholder="Nome" />
+            </FormGroup>
+            <FormGroup>
+              <Input type="email" name="email" id="email" placeholder="Email" />
+            </FormGroup>
+            <FormGroup>
+              <Input type="password" name="password" id="password" placeholder="Senha" />
+            </FormGroup>
+            <FormGroup>
+              <Input type="password" name="password" id="password" placeholder="Confirmar Senha" />
+            </FormGroup>
+            <Button>Cadastrar-se</Button>
+          </div>
+        </Form>
+      </div>
+      
+    </div>
+  );
+}
+
+function ResetPassword() {
+  return (
+    <div className="resetPassword">
+      <div className="authenticationForm">
+        <h4>Recuperar senha</h4>
+        <Form>
+          <div className="formItems">
+            <FormGroup>
+              <Input type="email" name="email" id="email" placeholder="Email" />
+              <FormText color="muted">
+                Enviaremos para você um email para restauração da senha.
+              </FormText>
+            </FormGroup>
+            <Button>Enviar</Button>
+          </div>
+        </Form>
+      </div>
+    </div>
+  );
 }
 
 function Professor() {
   return (
     <div className="Professor">
         <h4>Solicitações</h4>
-        <Table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>Curso</th>
-            <th>Comentário</th>
-            <th>Grade</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Exemplo</td>
-            <td>Ciência da Computação</td>
-            <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</td>
-            <td><a>Vizualizar</a></td>
-          </tr>
-        </tbody>
-        </Table>
+        <div>
+        <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333', height:'70px' }}>
+          <div className="solicitacao">     
+            <CardTitle><b>Exemple</b></CardTitle>
+            <Badge href="#" color="warning">Warning</Badge>
+            <Button><IoMdEye /></Button>
+          </div>
+          <CardBody className="simpleCard">
+          </CardBody>
+        </Card>
+
+        </div>
         <Form>
           <FormGroup>
             <Label for="materias">Editar a grade do aluno</Label>
@@ -182,13 +238,6 @@ function Professor() {
           <Button>Submit</Button>
         </Form>
       </div>
-  );  
-}
-
-function Creditos() {
-  return (
-    <div className="Creditos">
-    </div>
   );  
 }
 
