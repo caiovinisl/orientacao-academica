@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,9 +8,9 @@
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    font-family: 'Roboto', sans-serif;
     background: #fafafa;
-    color: #333;
+    color: #030F11;
     text-align: justify;
 }
 
@@ -21,8 +23,12 @@ a {
 }
 
 a:hover {
-    color: #333;
+    color: #030F11;
     text-decoration: none;
+}
+
+.navbarLink {
+    margin: 10px;
 }
 
 .Login, .Cadastro, .resetPassword {
@@ -31,11 +37,33 @@ a:hover {
     align-items: center;
 }
 
-.Login a {
-    color: #333;
+.formLinks a {
+    color: #17A2B8;
+}
+
+.formLinks a:hover {
+    color: #030F11;
+}
+
+.registerButton a {
+    color: #17A2B8;
+}
+
+.registerButton a:hover {
+    color: #fff;
+}
+
+.loginFormButtons {
+    display: flex;
+    justify-content: space-between;
 }
 
 .solicitacao {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.solicitacaoItems {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -54,13 +82,13 @@ a:hover {
 }
 
 .formLinks {
-    color: #104a8d;
+    margin-top: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
-.formLinks:hover {
-    color: #000055;
+.passwordFormGroup {
+    margin-bottom: 0;
 }
 
 .simpleCard {
