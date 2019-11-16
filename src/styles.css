@@ -69,6 +69,10 @@ a:hover {
     align-items: center;
 }
 
+.solicitacaoButton {
+    margin-bottom: 25px;
+}
+
 .authenticationForm {
     width: 400px;
     display: flex;

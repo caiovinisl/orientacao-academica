@@ -20,7 +20,9 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "react/no-multi-comp": "0",
+    "react/prop-types": "0"
   },
   "browserslist": {
     "production": [
