@@ -5,6 +5,7 @@ import Cadastro from './components/Cadastro';
 import ResetPassword from './components/ResetPassword';
 import Professor from './components/Professor';
 import Aluno from './components/Aluno';
+import Solicitacao from './components/Aluno/solicitacao.js';
 import { 
   Navbar,
   NavbarBrand,
@@ -43,6 +44,9 @@ function App() {
             </Route>
             <Route exact path="/aluno">
               <Aluno />
+            </Route>
+            <Route exact path="/solicitacao">
+              <Solicitacao />
             </Route>
             <Route exact path="/cadastro">
               <Cadastro />

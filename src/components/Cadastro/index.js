@@ -16,6 +16,9 @@ const Cadastro = () => (
               <Input type="text" name="user" id="user" placeholder="Nome" />
             </FormGroup>
             <FormGroup>
+              <Input type="text" name="cpf" id="cpf" placeholder="CPF" />
+            </FormGroup>
+            <FormGroup>
               <Input type="email" name="email" id="email" placeholder="Email" />
             </FormGroup>
             <FormGroup>

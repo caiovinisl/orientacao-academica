@@ -17,7 +17,7 @@ const Login = () => (
         <Form>
           <div className="formItems">
             <FormGroup>
-              <Input type="text" name="user" id="user" placeholder="Usuário" />
+              <Input type="text" name="cpf" id="cpf" placeholder="CPF" />
             </FormGroup>
             <FormGroup className="passwordFormGroup">
               <Input type="password" name="password" id="password" placeholder="Senha" />
