@@ -6,6 +6,9 @@ import {
     Label, 
     Input,
 } from 'reactstrap';
+import {
+    Link
+} from "react-router-dom";
 
 const Solicitacao = () => (
     <div className="App">
@@ -54,7 +57,8 @@ const Solicitacao = () => (
           <Label for="comentarios">Comentário</Label>
           <Input type="textarea" name="text" id="exampleText" />
         </FormGroup>
-        <Button color="info">Enviar</Button>
+        <Button color="info">Enviar</Button>{' '}
+        <Button color="secondary"><Link to="/aluno">Cancelar</Link></Button>
       </Form>
   </div> 
 )
